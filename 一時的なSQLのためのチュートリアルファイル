@@ -1,0 +1,26 @@
+<?php
+// 1. データベースに接続する（これが電話をかける作業）
+$dsn = 'mysql:dbname=データベース名;host=localhost';
+$user = 'root';
+$password = 'root'; // 環境によって空文字 '' の場合もあります
+
+try {
+    $dbh = new PDO($dsn, $user, $password);
+
+    // 2. SQLを準備する（手紙を書く）
+    $sql = 'SELECT * FROM テーブル名';
+
+    // 3. 実行して結果を受け取る
+    $stmt = $dbh->query($sql);
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    // 4. 画面に表示してみる（間違い探しの第一歩）
+    foreach ($result as $row) {
+        echo $row['column_name']; // カラム名を入れて表示
+    }
+
+} catch (PDOException $e) {
+    echo "接続失敗: " . $e->getMessage();
+    exit;
+}
+?>
