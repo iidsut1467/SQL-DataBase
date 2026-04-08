@@ -1,0 +1,25 @@
+<?php
+$dbh = "mysql:dbname=データベース名;host=localhost";
+$user = 'root';
+$password = 'root';
+
+try {
+    $dbh = new PDO($dns, $user, $password);
+
+    $sql = 'SELECT first_name, last_name FROM users';
+
+    $getTweet = 'SELECT * FROM tweets JOIN users ON users.first_name = "John" AND users.last_name = "Doe";
+    echo $getTweet;
+
+    $getReply = 'SELECT * FROM replys JOIN users ON users.first_name = "Jane" AND users.last_name = "Smith";
+    echo $getReply;
+
+    
+
+}
+
+
+
+
+
+?>
