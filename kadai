@@ -8,14 +8,24 @@ try {
 
     $sql = 'SELECT first_name, last_name FROM users';
 
+
     $getTweet = 'SELECT * FROM tweets JOIN users ON users.first_name = "John" AND users.last_name = "Doe";
     echo $getTweet;
+
 
     $getReply = 'SELECT * FROM replys JOIN users ON users.first_name = "Jane" AND users.last_name = "Smith";
     echo $getReply;
 
-    
 
+    $noneReply = 'SELECT * FROM replys JOIN users ON users.first_name = " " AND users.last_name = " ";
+    echo $noneReply
+
+    
+    $tweetCount = count('SELECT * FROM tweets JOIN users ON users.first_name = "Chalie" AND users.last_name = "Brown");
+    echo $tweetCount;
+
+
+    
 }
 
 
