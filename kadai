@@ -9,27 +9,33 @@ try {
     $sql = 'SELECT first_name AND last_name FROM users';
 
 
-    $getTweet = 'SELECT * FROM tweets JOIN users ON users.first_name = "John" AND users.last_name = "Doe"';
+    $get_tweet = 'SELECT * FROM tweets JOIN users ON users.first_name = "John" AND users.last_name = "Doe"';
     echo $getTweet;
 
 
-    $getReply = 'SELECT * FROM replys JOIN users ON users.first_name = "Jane" AND users.last_name = "Smith"';
+    $get_reply = 'SELECT * FROM replys JOIN users ON users.first_name = "Jane" AND users.last_name = "Smith"';
     echo $getReply;
 
 
-    $noneReply = 'SELECT * FROM replys JOIN users ON users.first_name = " " AND users.last_name = " "';
+    $none_reply = 'SELECT * FROM replys JOIN users ON users.first_name = " " AND users.last_name = " "';
     echo $noneReply
 
     
-    $tweetCount = count('SELECT * FROM tweets JOIN users ON users.first_name = "Chalie" AND users.last_name = "Brown")';
+    $tweet_count = count('SELECT * FROM tweets JOIN users ON users.first_name = "Chalie" AND users.last_name = "Brown")';
     echo $tweetCount;
 
 // ツイートIDとリプライ数の両方の変数を用意して、一番多いリプライがあるツイートを取得してそのツイートIDを取得する
 
-    $tweetId = 
-    $replyCount = ;
-    
-
+    global $tweet;
+    $tweet_id = $tweet->ID;
+    $reply_quantity = strlen()
+    $reply_count = 0;
+    $most_reply = 0;
+    for ($i = 1; $i <= strlen($reply_quantity); $i++) {
+    if($most_reply > $reply_count) {
+    $most_reply
+    }
+    }
     
 }
 ?>
