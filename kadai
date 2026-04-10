@@ -6,30 +6,30 @@ $password = 'root';
 try {
     $dbh = new PDO($dns, $user, $password);
 
-    $sql = 'SELECT first_name, last_name FROM users';
+    $sql = 'SELECT first_name AND last_name FROM users';
 
 
-    $getTweet = 'SELECT * FROM tweets JOIN users ON users.first_name = "John" AND users.last_name = "Doe";
+    $getTweet = 'SELECT * FROM tweets JOIN users ON users.first_name = "John" AND users.last_name = "Doe"';
     echo $getTweet;
 
 
-    $getReply = 'SELECT * FROM replys JOIN users ON users.first_name = "Jane" AND users.last_name = "Smith";
+    $getReply = 'SELECT * FROM replys JOIN users ON users.first_name = "Jane" AND users.last_name = "Smith"';
     echo $getReply;
 
 
-    $noneReply = 'SELECT * FROM replys JOIN users ON users.first_name = " " AND users.last_name = " ";
+    $noneReply = 'SELECT * FROM replys JOIN users ON users.first_name = " " AND users.last_name = " "';
     echo $noneReply
 
     
-    $tweetCount = count('SELECT * FROM tweets JOIN users ON users.first_name = "Chalie" AND users.last_name = "Brown");
+    $tweetCount = count('SELECT * FROM tweets JOIN users ON users.first_name = "Chalie" AND users.last_name = "Brown")';
     echo $tweetCount;
 
+// ツイートIDとリプライ数の両方の変数を用意して、一番多いリプライがあるツイートを取得してそのツイートIDを取得する
+
+    $tweetId = 
+    $replyCount = ;
+    
 
     
 }
-
-
-
-
-
 ?>
