@@ -32,10 +32,17 @@ try {
     $reply_count = 0;
     $most_reply = 0;
     for ($i = 1; $i <= strlen($reply_quantity); $i++) {
-    if($most_reply > $reply_count) {
-    $most_reply
+        if($reply_count > $most_reply) {
+        $most_reply = $reply_count;
+        }
     }
-    }
-    
+    echo $most_reply;
+
+
+    $all_tweets_replys = SELECT * FROM tweets JOIN replys WHERE reply;
+    echo $all_tweets_replys;
+
+
+    // ユーザーのツイートとリプライをどう取得するか、区別して表示するのはidを用いてforでよさそう、そしてそれとは別にいくつtweetとreplyがあるかカウントする変数を用意する。
 }
 ?>
