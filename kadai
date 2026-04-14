@@ -44,5 +44,42 @@ try {
 
 
     // ユーザーのツイートとリプライをどう取得するか、区別して表示するのはidを用いてforでよさそう、そしてそれとは別にいくつtweetとreplyがあるかカウントする変数を用意する。
-}
+    for($i = 1; $i <= 10; $i++) {
+    $user_id = $i;
+    $user_tweets = SELECT tweets FROM tweet where user_id = $user_id;
+    $user_replys = SELECT replys FROM reply where user_id = $user_id;
+
+    echo "このユーザーのツイート数は" + $user_tweets + "個です。";
+    echo "このユーザーのリプライ数は" + $user_replys + "個です。";
+    }
+
+
+    // 最大のリプライ数、現在のリプライ数を入れる変数を用意しておいてforを用いてuser_idが10になるまで現在の最大数と比較する。その上で出た最大のリプライ数のuser_idの人の名前と姓を取得する。
+    $most_reply = 0;
+    $recently_reply = 0;
+    for($i = 1; $i <= 10; $i++) {
+    $recently_reply = count
+    }
+
+
+    // tweets,users,replysの3テーブルをJOINしてくっつけて、tweetをもとにuserの名前とreplyもtweetとみなしてuserの名前、そしてどのtweetへのreplyかも表示する。
+    // tweetsとusersのJOINとreplyとusersのJOINで別で置いておいて同じuserの名前を出す部分に関しては同じ関数を使いたい。加えて、replysの方ではどのtweetへのreplyなのかも表示する関数を作らなければならない。
+
+    $user_id = 0;
+    for($i = 1; $i <= 10; $i++) {
+    $user_id = $i;
+    $tweet_user = SELECT * FROM tweets JOIN users where user_id = $user_id;
+    $tweet = SELECT * FROM tweets where user_id = $user_id;
+    echo $tweet;
+    echo $tweet_user;
+    }
+
+    for($i = 1; $i <= 10; $i++) {
+    $user_id = $i;
+    $reply_user = SELECT * FROM replys
+
+
+
+
+    }
 ?>
