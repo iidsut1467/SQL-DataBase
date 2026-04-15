@@ -9,16 +9,19 @@ try {
     $sql = 'SELECT first_name AND last_name FROM users';
 
 
+    // 下記のコードは合っていた
     $get_tweet = 'SELECT * FROM tweets JOIN users ON users.first_name = "John" AND users.last_name = "Doe"';
     echo $getTweet;
 
 
+    // 下記のコードは合っていた
     $get_reply = 'SELECT * FROM replys JOIN users ON users.first_name = "Jane" AND users.last_name = "Smith"';
     echo $getReply;
 
 
-    $none_reply = 'SELECT * FROM replys JOIN users ON users.first_name = " " AND users.last_name = " "';
-    echo $noneReply
+    // 下記のコードは
+    SELECT * FROM replys JOIN users ON users.first_name = " " AND users.last_name = " "';
+    
 
     
     $tweet_count = count('SELECT * FROM tweets JOIN users ON users.first_name = "Chalie" AND users.last_name = "Brown")';
@@ -57,29 +60,22 @@ try {
     // 最大のリプライ数、現在のリプライ数を入れる変数を用意しておいてforを用いてuser_idが10になるまで現在の最大数と比較する。その上で出た最大のリプライ数のuser_idの人の名前と姓を取得する。
     $most_reply = 0;
     $recently_reply = 0;
+    $most_reply = 0;
     for($i = 1; $i <= 10; $i++) {
-    $recently_reply = count
-    }
+    $recently_reply = count(SELECT * FROM reply WHERE user_id = $i);
+    if($most_reply < $recently_reply) {
+    $most_
+    }}
 
 
     // tweets,users,replysの3テーブルをJOINしてくっつけて、tweetをもとにuserの名前とreplyもtweetとみなしてuserの名前、そしてどのtweetへのreplyかも表示する。
     // tweetsとusersのJOINとreplyとusersのJOINで別で置いておいて同じuserの名前を出す部分に関しては同じ関数を使いたい。加えて、replysの方ではどのtweetへのreplyなのかも表示する関数を作らなければならない。
-
-    $user_id = 0;
-    for($i = 1; $i <= 10; $i++) {
-    $user_id = $i;
-    $tweet_user = SELECT * FROM tweets JOIN users where user_id = $user_id;
-    $tweet = SELECT * FROM tweets where user_id = $user_id;
-    echo $tweet;
-    echo $tweet_user;
-    }
-
-    for($i = 1; $i <= 10; $i++) {
-    $user_id = $i;
-    $reply_user = SELECT * FROM replys
+    // 下記のコードでとりあえず全ユーザーのツイートとリプライをそれぞれ出すことができた
+    SELECT * FROM tweets JOIN users;
+    SELECT * FROM replys JOIN users;
 
 
 
-
+// JOINの考え方はよい、sqlサーバーで実行してみる→SQLになおしてやってみる
     }
 ?>
