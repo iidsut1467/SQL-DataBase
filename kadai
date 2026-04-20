@@ -19,13 +19,14 @@ try {
     echo $getReply;
 
 
-    // 下記のコードは
-    SELECT * FROM replys JOIN users ON users.first_name = " " AND users.last_name = " "';
+    // 下記のコードは通った
+    SELECT * FROM twitter.users JOIN twitter.replys WHERE user_id BETWEEN '1' AND '10';
     
 
-    
-    $tweet_count = count('SELECT * FROM tweets JOIN users ON users.first_name = "Chalie" AND users.last_name = "Brown")';
-    echo $tweetCount;
+    // 下記のコートも通ったはず    
+    SELECT COUNT('tweet') FROM tweets JOIN users ON first_name = "Chalie" AND last_name = "Brown";
+
+
 
 // ツイートIDとリプライ数の両方の変数を用意して、一番多いリプライがあるツイートを取得してそのツイートIDを取得する
 
