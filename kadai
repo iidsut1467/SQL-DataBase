@@ -46,6 +46,18 @@ try {
     $all_tweets_replys = SELECT * FROM tweets JOIN replys WHERE reply;
     echo $all_tweets_replys;
 
+    SELECT 
+        t.id AS tweet_id, 
+        u.first_name, 
+        u.last_name, 
+        t.tweet, 
+        COUNT(r.id) AS reply_count
+    FROM tweets t
+    JOIN users u ON t.user_id = u.id
+    LEFT JOIN replys r ON t.id = r.tweet_id
+    GROUP BY t.id
+    ORDER BY reply_count;
+
 
     // ユーザーのツイートとリプライをどう取得するか、区別して表示するのはidを用いてforでよさそう、そしてそれとは別にいくつtweetとreplyがあるかカウントする変数を用意する。
     for($i = 1; $i <= 10; $i++) {
