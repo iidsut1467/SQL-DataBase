@@ -9,26 +9,26 @@ try {
     $sql = 'SELECT first_name AND last_name FROM users';
 
 
-    // 下記のコードは合っていた
+1    // 下記のコードは合っていた
     $get_tweet = 'SELECT * FROM tweets JOIN users ON users.first_name = "John" AND users.last_name = "Doe"';
     echo $getTweet;
 
 
-    // 下記のコードは合っていた
+2    // 下記のコードは合っていた
     $get_reply = 'SELECT * FROM replys JOIN users ON users.first_name = "Jane" AND users.last_name = "Smith"';
     echo $getReply;
 
 
-    // 下記のコードは通った
+3    // 下記のコードは通った
     SELECT * FROM twitter.users JOIN twitter.replys WHERE user_id BETWEEN '1' AND '10';
     
 
-    // 下記のコートも通ったはず    
+4    // 下記のコートも通ったはず    
     SELECT COUNT('tweet') FROM tweets JOIN users ON first_name = "Chalie" AND last_name = "Brown";
 
 
 
-// ツイートIDとリプライ数の両方の変数を用意して、一番多いリプライがあるツイートを取得してそのツイートIDを取得する
+5   // ツイートIDとリプライ数の両方の変数を用意して、一番多いリプライがあるツイートを取得してそのツイートIDを取得する
 
     global $tweet;
     $tweet_id = $tweet->ID;
@@ -59,7 +59,7 @@ try {
     ORDER BY reply_count;
 
 
-    // ユーザーのツイートとリプライをどう取得するか、区別して表示するのはidを用いてforでよさそう、そしてそれとは別にいくつtweetとreplyがあるかカウントする変数を用意する。
+6    // ユーザーのツイートとリプライをどう取得するか、区別して表示するのはidを用いてforでよさそう、そしてそれとは別にいくつtweetとreplyがあるかカウントする変数を用意する。
     for($i = 1; $i <= 10; $i++) {
     $user_id = $i;
     $user_tweets = SELECT tweets FROM tweet where user_id = $user_id;
@@ -70,7 +70,7 @@ try {
     }
 
 
-    // 最大のリプライ数、現在のリプライ数を入れる変数を用意しておいてforを用いてuser_idが10になるまで現在の最大数と比較する。その上で出た最大のリプライ数のuser_idの人の名前と姓を取得する。
+7    // 最大のリプライ数、現在のリプライ数を入れる変数を用意しておいてforを用いてuser_idが10になるまで現在の最大数と比較する。その上で出た最大のリプライ数のuser_idの人の名前と姓を取得する。
     $most_reply = 0;
     $recently_reply = 0;
     $most_reply = 0;
@@ -84,11 +84,11 @@ try {
     // tweets,users,replysの3テーブルをJOINしてくっつけて、tweetをもとにuserの名前とreplyもtweetとみなしてuserの名前、そしてどのtweetへのreplyかも表示する。
     // tweetsとusersのJOINとreplyとusersのJOINで別で置いておいて同じuserの名前を出す部分に関しては同じ関数を使いたい。加えて、replysの方ではどのtweetへのreplyなのかも表示する関数を作らなければならない。
     // 下記のコードでとりあえず全ユーザーのツイートとリプライをそれぞれ出すことができた
-    SELECT * FROM tweets JOIN users;
-    SELECT * FROM replys JOIN users;
+8    SELECT * FROM tweets JOIN users;
+9    SELECT * FROM replys JOIN users;
 
 
 
-// JOINの考え方はよい、sqlサーバーで実行してみる→SQLになおしてやってみる
+10  // JOINの考え方はよい、sqlサーバーで実行してみる→SQLになおしてやってみる
     }
 ?>
