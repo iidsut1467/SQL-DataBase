@@ -84,7 +84,7 @@ try {
     // tweets,users,replysの3テーブルをJOINしてくっつけて、tweetをもとにuserの名前とreplyもtweetとみなしてuserの名前、そしてどのtweetへのreplyかも表示する。
     // tweetsとusersのJOINとreplyとusersのJOINで別で置いておいて同じuserの名前を出す部分に関しては同じ関数を使いたい。加えて、replysの方ではどのtweetへのreplyなのかも表示する関数を作らなければならない。
     // 下記のコードでとりあえず全ユーザーのツイートとリプライをそれぞれ出すことができた
-8    SELECT * FROM tweets JOIN users;
+8    SELECT * FROM tweets AND replys JOIN users;
 9    SELECT * FROM replys JOIN users;
 
 
