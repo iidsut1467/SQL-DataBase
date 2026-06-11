@@ -80,15 +80,26 @@ try {
     $most_
     }}
 
+　　SELECT t.tweet, r.reply FROM tweets t LEFT JOIN replys r ON t.id = r.tweet_id;
 
     // tweets,users,replysの3テーブルをJOINしてくっつけて、tweetをもとにuserの名前とreplyもtweetとみなしてuserの名前、そしてどのtweetへのreplyかも表示する。
     // tweetsとusersのJOINとreplyとusersのJOINで別で置いておいて同じuserの名前を出す部分に関しては同じ関数を使いたい。加えて、replysの方ではどのtweetへのreplyなのかも表示する関数を作らなければならない。
     // 下記のコードでとりあえず全ユーザーのツイートとリプライをそれぞれ出すことができた
-8    SELECT * FROM tweets AND replys JOIN users;
-9    SELECT * FROM replys JOIN users;
 
 
 
-10  // JOINの考え方はよい、sqlサーバーで実行してみる→SQLになおしてやってみる
+8    SELECT u.id, u.first_name, u.last_name, COUNT(DISTINCT t.id), COUNT(DISTINCT r.id) FROM users u LEFT JOIN tweets t ON u.id = t.user_id LEFT JOIN replys r ON u.id = r.user_id GROUP BY u.id, u.first_name, u.last_name;
+
+
+
+9    SELECT u.first_name, u.last_name FROM users u JOIN replys r ON u.id = r.user_id GROUP BY u.id, u.first_name, u.last_name ORDER BY COUNT(*) DESC LIMIT 1;
+
+
+
+
+10  SELECT t.tweet, u.first_name, u.last_name, NULL AS src FROM tweets t JOIN users u ON t.user_id = u.id UNION ALL SELECT r.reply, u.first_name, u.last_name, t.tweet FROM replys r JOIN users u ON r.user_id = u.id JOIN tweets t ON r.tweet_id = t.id;
+
+
+    // JOINの考え方はよい、sqlサーバーで実行してみる→SQLになおしてやってみる
     }
 ?>
