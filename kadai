@@ -92,12 +92,12 @@ try {
 
 
 
-9    SELECT u.first_name, u.last_name FROM users u JOIN replys r ON u.id = r.user_id GROUP BY u.id, u.first_name, u.last_name ORDER BY COUNT(*) DESC LIMIT 1;
+9    SELECT u.first_name, u.last_name FROM users u JOIN replys r ON u.id = r.user_id GROUP BY u.id, u.first_name, u.last_name;
 
 
 
 
-10  SELECT t.tweet, u.first_name, u.last_name, NULL AS src FROM tweets t JOIN users u ON t.user_id = u.id UNION ALL SELECT r.reply, u.first_name, u.last_name, t.tweet FROM replys r JOIN users u ON r.user_id = u.id JOIN tweets t ON r.tweet_id = t.id;
+10  SELECT t.tweet, u.first_name, u.last_name, reply AS src FROM tweets t JOIN users u ON t.user_id = u.id UNION ALL SELECT r.reply, u.first_name, u.last_name, t.tweet FROM replys r JOIN users u ON r.user_id = u.id JOIN tweets t ON r.tweet_id = t.id;
 
 
     // JOINの考え方はよい、sqlサーバーで実行してみる→SQLになおしてやってみる
