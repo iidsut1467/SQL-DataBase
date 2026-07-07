@@ -69,6 +69,8 @@ try {
     echo "このユーザーのリプライ数は" + $user_replys + "個です。";
     }
 
+    SELECT COUNT(*) AS カウント FROM(SELECT user_id FROM tweets UNION ALL SELECT user_id FROM replys)a GROUP BY user_id ORDER BY カウント DESC LIMIT 1;
+
 
 7    // 最大のリプライ数、現在のリプライ数を入れる変数を用意しておいてforを用いてuser_idが10になるまで現在の最大数と比較する。その上で出た最大のリプライ数のuser_idの人の名前と姓を取得する。
     $most_reply = 0;
@@ -92,14 +94,10 @@ try {
 
 
 
-9    SELECT u.first_name, u.last_name FROM users u JOIN replys r ON u.id = r.user_id GROUP BY u.id, u.first_name, u.last_name;
+9    SELECT u.id, u.first_name, u.last_name, COUNT(DISTINCT t.id), COUNT(DISTINCT r.id) FROM users u LEFT JOIN tweets t ON u.id = t.user_id LEFT JOIN replys r ON u.id = r.user_id GROUP BY u.id, u.first_name, u.last_name;
 
 
-
-
-10  SELECT t.tweet, u.first_name, u.last_name, reply AS src FROM tweets t JOIN users u ON t.user_id = u.id UNION ALL SELECT r.reply, u.first_name, u.last_name, t.tweet FROM replys r JOIN users u ON r.user_id = u.id JOIN tweets t ON r.tweet_id = t.id;
-
-
+10　　SELECT t.tweet,u.first_name,u.last_name,NULL FROM tweets t JOIN users u ON t.user_id=u.id UNION SELECT r.reply,u.first_name,u.last_name,t.tweet FROM replys r JOIN users u ON r.user_id=u.id LEFT JOIN tweets t ON r.tweet_id=t.id ORDER BY 4;
     // JOINの考え方はよい、sqlサーバーで実行してみる→SQLになおしてやってみる
     // できたぞおおおお！！！！
     }
